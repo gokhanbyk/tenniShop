@@ -1,9 +1,10 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import HomeScreen from "./screens/HomeScreen.jsx";
+
 
 // React Bootstrap
 import { Container } from 'react-bootstrap';
-import HomeScreen from "./screens/HomeScreen";
 
 function App() {
 
