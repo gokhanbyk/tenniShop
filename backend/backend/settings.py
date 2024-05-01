@@ -30,29 +30,25 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-BASE_APPS = [
-  'base',
-]
-
-THIRD_PARTY_APPS = [
-  'rest_framework',
-  "corsheaders",
-]
-
 INSTALLED_APPS = [
+    # Base app
+    'base',
+    # Third party apps
+    'rest_framework',
+    'corsheaders',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    BASE_APPS,
-    THIRD_PARTY_APPS,
 ]
 
 MIDDLEWARE = [
     # CORS
     "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
