@@ -1,14 +1,18 @@
 import { Link, useParams } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
+import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap';
 import Rating from '../components/Rating.jsx';
 import Loader from '../components/Loader.jsx';
 import Message from '../components/Message.jsx';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails } from '../actions/productActions.jsx';
 
 
 function ProductScreen() {
+  const [qty, setQty] = useState(1);
+
+
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector(state => state.productDetails);
@@ -70,6 +74,21 @@ function ProductScreen() {
                         </Col>
                       </Row>
                     </ListGroup.Item>
+
+                    {product.countInStock > 0 && (
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>
+                            Qty
+                          </Col>
+                          <Col>
+                            <Form.Control as="select" value={qty} onChange={(e) => setQty(e.target.value)}>
+
+                            </Form.Control>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    )}
 
                     <ListGroup.Item>
                       <Button className='w-100' disabled={product.countInStock == 0 && 'true'} type='button'>
