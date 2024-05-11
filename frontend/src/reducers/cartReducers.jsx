@@ -1,12 +1,12 @@
+/* eslint-disable no-case-declarations */
 import { CART_ADD_ITEM } from '../constants/cartConstants';
 
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case CART_ADD_ITEM:
-      // eslint-disable-next-line no-case-declarations
+
       const item = action.payload;
-      // eslint-disable-next-line no-case-declarations
       const existItem = state.cartItems.find((x) => x.product === item.product);
 
       if (existItem) {
