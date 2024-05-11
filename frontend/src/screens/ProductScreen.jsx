@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap';
 import Rating from '../components/Rating.jsx';
@@ -6,11 +7,12 @@ import Message from '../components/Message.jsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails } from '../actions/productActions.jsx';
+import { useNavigate } from "react-router-dom";
 
 
 function ProductScreen() {
   const [qty, setQty] = useState(1);
-
+  let navigate = useNavigate();
 
 
   const { id } = useParams();
@@ -22,6 +24,10 @@ function ProductScreen() {
     dispatch(listProductDetails(id));
 
   }, [dispatch, id]);
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}?qty=${qty}`);
+  };
 
   return (
     <div>
@@ -81,9 +87,15 @@ function ProductScreen() {
                           <Col>
                             Qty
                           </Col>
-                          <Col>
+                          <Col xs="auto" className='my-1'>
                             <Form.Control as="select" value={qty} onChange={(e) => setQty(e.target.value)}>
-
+                              {
+                                [...Array(product.countInStock).keys().map((x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                ))]
+                              }
                             </Form.Control>
                           </Col>
                         </Row>
@@ -91,7 +103,7 @@ function ProductScreen() {
                     )}
 
                     <ListGroup.Item>
-                      <Button className='w-100' disabled={product.countInStock == 0 && 'true'} type='button'>
+                      <Button onClick={addToCartHandler} className='w-100' disabled={product.countInStock == 0 && 'true'} type='button'>
                         Add to Cart
                       </Button>
                     </ListGroup.Item>
