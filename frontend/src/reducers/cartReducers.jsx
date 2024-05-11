@@ -1,4 +1,3 @@
-/* eslint-disable no-case-declarations */
 import { CART_ADD_ITEM } from '../constants/cartConstants';
 
 
