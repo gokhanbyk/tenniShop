@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen.jsx";
 import ProductScreen from "./screens/ProductScreen.jsx";
 import CartScreen from "./screens/CartScreen.jsx";
+import LoginScreen from "./screens/LoginScreen.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" Component={HomeScreen} exact />
+            <Route path="/login" Component={LoginScreen} />
             <Route path="/product/:id" Component={ProductScreen} />
             <Route path="/cart/:id?" Component={CartScreen} />
           </Routes>
