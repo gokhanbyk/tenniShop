@@ -9,6 +9,7 @@ urlpatterns = [
     path('', getRoutes, name='routes'),
 
     path('users/profile/', getUserProfile, name='users-profile'),
+    path('users/', getUsers, name='users'),
 
     path('products/', getProducts, name='products'),
     path('products/<str:pk>', getProduct, name='product'),
