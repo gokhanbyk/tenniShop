@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants';
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  axios.defaults.baseURL = 'http://127.0.0.1:8000';
+  // axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
   const { data } = await axios.get(`/api/products/${id}`);
   dispatch({
