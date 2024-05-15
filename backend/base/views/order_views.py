@@ -45,7 +45,7 @@ def addOrderItems(request):
         product=product,
         order=order,
         name=product.name,
-        quantity =i['qty'],
+        qty =i['qty'],
         price=i['price'],
         image=product.image.url,
       )
@@ -54,6 +54,6 @@ def addOrderItems(request):
       product.save()
 
 
-  serializer = OrderSerializer(order, many=False)
+    serializer = OrderSerializer(order, many=False)
 
-  return Response(serializer.data)
+    return Response(serializer.data)
