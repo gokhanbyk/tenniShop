@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from base.products import products
 from base.models import Product, Order, OrderItem, ShippingAddress
-from base.serializers import ProductSerializer
+from base.serializers import ProductSerializer, OrderSerializer
 
 # djando restframework
 from rest_framework import status
@@ -54,4 +54,6 @@ def addOrderItems(request):
       product.save()
 
 
-  return Response('ORDER')
+  serializer = OrderSerializer(order, many=False)
+
+  return Response(serializer.data)
