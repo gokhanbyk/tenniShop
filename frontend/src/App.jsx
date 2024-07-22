@@ -9,6 +9,7 @@ import ProfileScreen from "./screens/ProfileScreen.jsx";
 import ShippingScreen from "./screens/ShippingScreen.jsx";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.jsx";
 import PaymentScreen from "./screens/PaymentScreen.jsx";
+import OrderScreen from "./screens/OrderScreen.jsx";
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/shipping" Component={ShippingScreen} />
             <Route path="/payment" Component={PaymentScreen} />
             <Route path="/placeorder" Component={PlaceOrderScreen} />
+            <Route path="/order/:id" Component={OrderScreen} />
             <Route path="/product/:id" Component={ProductScreen} />
             <Route path="/cart/:id?" Component={CartScreen} />
           </Routes>
