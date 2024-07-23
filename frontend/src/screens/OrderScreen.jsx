@@ -24,7 +24,7 @@ function OrderScreen() {
     if (!order || order._id !== Number(orderId)) {
       dispatch(getOrderDetails(orderId));
     }
-  }, [order, orderId]);
+  }, [order, orderId, dispatch]);
 
   return loading ? (
     <Loader />
